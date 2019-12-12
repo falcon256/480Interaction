@@ -89,10 +89,5 @@ public class ReactorDisplay : MonoBehaviour
         reactorCoreTempGraph.SetAllDirty();
     }
 
-    public Color getColorValue(float v)
-    {
-        if (v > 0.5f)
-            return Color.Lerp(Color.green, Color.red, v - 0.5f);
-        return Color.Lerp(Color.green, Color.blue, 0.5f - v);
-    }
+
 }
