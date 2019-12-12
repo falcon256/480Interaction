@@ -16,6 +16,10 @@ public class ReactorDisplay : MonoBehaviour
     public int maxDataPoints = 256;
 
     public GraphHandler reactorCoreTemperatureGraph = null;
+    public GraphHandler reactorInnerLoopTemperatureGraph = null;
+    public GraphHandler reactorOuterLoopTemperatureGraph = null;
+    public GraphHandler reactorCoreInnerDeltaGraph = null;
+    public GraphHandler reactorInnerOuterDeltaGraph = null;
     
 
     // Start is called before the first frame update
@@ -37,7 +41,11 @@ public class ReactorDisplay : MonoBehaviour
             Debug.LogError("Ship was null, you forgot to set it");
             return;
         }
-        reactorCoreTemperatureGraph.tickGraph(ship.reactorCoreTemperature,0,32.0f, 0.00094607379f);//I want 1057 to max it out, so (32/1057)/32 = 0.00094607379
+        reactorCoreTemperatureGraph.tickGraph(ship.reactorCoreTemperature,0,32.0f, 0.00094607379f);//I want 1057 to max it out, so (32/1057)/32 = 0.00094607379 nak77
+        reactorInnerLoopTemperatureGraph.tickGraph(ship.reactorInnerLoopTemp, 0, 32.0f, 0.00094607379f);//I want 1057 to max it out, so (32/1057)/32 = 0.00094607379 nak77
+        reactorOuterLoopTemperatureGraph.tickGraph(ship.reactorOuterLoopTemp, 0, 32.0f, 0.002f);//I want 500 to max it out, so (32/500)/32 = 0.002 h2o
+        reactorCoreInnerDeltaGraph.tickGraph(ship.reactorCoreInnerDelta, 16.0f, 32.0f, 0.001f);//I want 1000 to max it out, so (32/1000)/32 = 0.001
+        reactorInnerOuterDeltaGraph.tickGraph(ship.reactorInnerOuterDelta, 16.0f, 32.0f, 0.001f);//I want 1000 to max it out, so (32/1000)/32 = 0.001
     }
 
 

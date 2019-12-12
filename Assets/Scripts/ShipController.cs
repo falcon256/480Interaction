@@ -14,6 +14,9 @@ public class ShipController : MonoBehaviour
     public float reactorInnerOuterDelta = 0.0f;
     public float reactorCorePressure = 1.0f;
 
+    public float coreInnerHeatExchangerEfficiency = 0.001f;
+    public float innerOuterHeatExchangerEfficiency = 0.002f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,16 @@ public class ShipController : MonoBehaviour
         reactorCoreTemperature += Mathf.Sin(Time.realtimeSinceStartup*0.5f)*5.0f;
         reactorCoreTemperature *= 0.9999f;
         reactorCoreTemperature = Mathf.Clamp(reactorCoreTemperature, 0, 100000.0f);
-       
+
+        reactorCoreInnerDelta  = reactorCoreTemperature - reactorInnerLoopTemp;
+        reactorInnerOuterDelta = reactorInnerLoopTemp - reactorOuterLoopTemp;
+
+        reactorCoreTemperature -= reactorCoreInnerDelta  * coreInnerHeatExchangerEfficiency;
+        reactorInnerLoopTemp   += reactorCoreInnerDelta  * coreInnerHeatExchangerEfficiency;
+        reactorInnerLoopTemp   -= reactorInnerOuterDelta * innerOuterHeatExchangerEfficiency;
+        reactorOuterLoopTemp   += reactorInnerOuterDelta * innerOuterHeatExchangerEfficiency;
+
+
     }
     
 }
