@@ -20,7 +20,7 @@ public class ReactorDisplay : MonoBehaviour
     public GraphHandler reactorOuterLoopTemperatureGraph = null;
     public GraphHandler reactorCoreInnerDeltaGraph = null;
     public GraphHandler reactorInnerOuterDeltaGraph = null;
-    
+    public GraphHandler reactorCorePressureGraph = null;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +46,7 @@ public class ReactorDisplay : MonoBehaviour
         reactorOuterLoopTemperatureGraph.tickGraph(ship.reactorOuterLoopTemp, 0, 32.0f, 0.002f);//I want 500 to max it out, so (32/500)/32 = 0.002 h2o
         reactorCoreInnerDeltaGraph.tickGraph(ship.reactorCoreInnerDelta, 16.0f, 32.0f, 0.001f);//I want 1000 to max it out, so (32/1000)/32 = 0.001
         reactorInnerOuterDeltaGraph.tickGraph(ship.reactorInnerOuterDelta, 16.0f, 32.0f, 0.001f);//I want 1000 to max it out, so (32/1000)/32 = 0.001
+        reactorCorePressureGraph.tickGraph(ship.reactorCorePressure/1000.0f, 0.0f, 32.0f, 0.0001f);//I want 10000 to max it out, so (32/10000)/32 = 0.0001
     }
 
 
