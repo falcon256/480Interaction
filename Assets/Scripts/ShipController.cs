@@ -5,6 +5,9 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
 
+    //inputs
+    public SliderController reactorControlRodPositionInput = null;
+
 
     //Public Information for the ship data
     public float reactorCoreTemperature = 100.0f;
@@ -68,8 +71,12 @@ public class ShipController : MonoBehaviour
     
     void FixedUpdate()
     {
-        reactorCoreTemperature += Random.Range(-10.1f, 10.1f);
-        reactorCoreTemperature += Mathf.Sin(Time.realtimeSinceStartup*0.5f)*5.0f;
+
+        reactorControlRodPosition = Mathf.Lerp(reactorControlRodPosition,reactorControlRodPositionInput.output*2,0.001f);
+        reactorFlux = Mathf.Lerp(reactorFlux, (((reactorModeratorPosition * reactorControlRodPosition * reactorFuelLevel * 0.001f) + reactorDecayProducts + (reactorFlux*0.5f)) - reactorXenonBuildup),0.01f);
+        reactorCoreTemperature += reactorFlux*0.01f;
+        reactorCoreTemperature += Random.Range(-1.0f, 1.0f);
+        //reactorCoreTemperature += Mathf.Sin(Time.realtimeSinceStartup*0.5f)*5.0f;
         reactorCoreTemperature *= 0.9999f;
         reactorCoreTemperature = Mathf.Clamp(reactorCoreTemperature, 0, 100000.0f);
 
