@@ -81,9 +81,14 @@ public class ShipController : MonoBehaviour
         reactorInnerLoopTemp   -= reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM);
         reactorOuterLoopTemp   += reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM);
 
-        reactorCorePressure = (reactorCorePressure * 0.99f) + (reactorCoreLoopPump1RPM * reactorCoreTemperature) + (reactorCoreLoopPump2RPM * reactorCoreTemperature) + reactorFlux;
+        reactorCorePressure = (reactorCorePressure * 0.99f) + (reactorCoreLoopPump1RPM * getNaKPressure(reactorCoreTemperature)) + (reactorCoreLoopPump2RPM * getNaKPressure(reactorCoreTemperature)) + reactorFlux;
+        reactorInnerLoopPressure = (reactorInnerLoopPressure * 0.99f) + (reactorInnerLoopPump1RPM * getNaKPressure(reactorInnerLoopTemp)) + (reactorInnerLoopPump2RPM * getNaKPressure(reactorInnerLoopTemp));
+
     }
-    
+    public float getNaKPressure(float temp)
+    {
+        return Mathf.Pow(Mathf.Clamp(temp - 1057, 0, 100000.0f), 1.1f);
+    }
 }
 
 
