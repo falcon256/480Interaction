@@ -10,13 +10,13 @@ public class ShipController : MonoBehaviour
 
 
     //Public Information for the ship data
-    public float reactorCoreTemperature = 100.0f;
-    public float reactorInnerLoopTemp = 100.0f;
-    public float reactorOuterLoopTemp = 100.0f;
-    public float reactorCoreInnerDelta = 0.0f;
-    public float reactorInnerOuterDelta = 0.0f;
+    public float reactorCoreTemperature = 100.0f;//
+    public float reactorInnerLoopTemp = 100.0f;//
+    public float reactorOuterLoopTemp = 100.0f;//
+    public float reactorCoreInnerDelta = 0.0f;//
+    public float reactorInnerOuterDelta = 0.0f;//
 
-    public float reactorCorePressure = 1.0f;
+    public float reactorCorePressure = 1.0f;//
     public float reactorInnerLoopPressure = 1.0f;
     public float reactorOuterLoopPressure = 1.0f;
 
