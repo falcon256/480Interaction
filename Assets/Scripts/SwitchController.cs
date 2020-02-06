@@ -30,11 +30,6 @@ public class SwitchController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void FixedUpdate()
     {
@@ -45,7 +40,6 @@ public class SwitchController : MonoBehaviour
         switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + ((switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z - 100.0f) * -0.002f));
         if (switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > 180 && switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z < 360.0f + switchOffAngle)
         {
-            Debug.Log(switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z);
             switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0,0,360.0f + switchOffAngle);
             on = false;
             return;
