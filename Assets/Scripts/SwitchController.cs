@@ -37,7 +37,15 @@ public class SwitchController : MonoBehaviour
         switchGuard.GetComponent<Rigidbody>().transform.position = guardStartPosition;
         switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z+((switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z - 180.0f) * -0.001f));
         //this actually works great for some reason........
-        switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + ((switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z - 100.0f) * -0.002f));
+        if (switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > 45.0f)
+            switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + ((switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z - 100.0f) * -0.002f));
+        else
+        {
+            if (switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z < 26.0f)
+                switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + ((switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + 10.0f) * -0.02f));
+            else
+                switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + ((switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z - 10.0f) * -0.002f));
+        }
         if (switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > 180 && switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z < 360.0f + switchOffAngle)
         {
             switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0,0,360.0f + switchOffAngle);
@@ -50,8 +58,15 @@ public class SwitchController : MonoBehaviour
             on = true;
             return;
         }      
-
-
+        /*
+        if(switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > 45.0f && switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z<120.0f)
+        {
+            switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + 2.0f);
+        }
+        else if (switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z<=45.0f && switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > 0.0f)
+        {
+            switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z - 2.0f);
+        }*/
 
 
     }
