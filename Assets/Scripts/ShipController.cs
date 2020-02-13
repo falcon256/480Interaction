@@ -6,17 +6,34 @@ public class ShipController : MonoBehaviour
 {
 
     //inputs
+    public ButtonController reactorEmergencySCRAM = null;//Safety Control Rods Activation Mechanism
     public SliderController reactorControlRodPositionInput = null;
-
+    public SliderController reactorModeratorRodPositionInput = null;
+    public LeverController reactorCoreLoopPump1PositionInput = null;
+    public LeverController reactorCoreLoopPump2PositionInput = null;
+    public LeverController reactorInnerLoopPump1PositionInput = null;
+    public LeverController reactorInnerLoopPump2PositionInput = null;
+    public SwitchController reactorCoreLoopPump1OnOff = null;
+    public SwitchController reactorCoreLoopPump2OnOff = null;
+    public SwitchController reactorInnerLoopPump1OnOff = null;
+    public SwitchController reactorInnerLoopPump2OnOff = null;
+    public SwitchController reactorTurbine1OnOff = null;
+    public SwitchController reactorTurbine2OnOff = null;
+    public SwitchController reactorTurbine3OnOff = null;
+    public SwitchController reactorTurbine4OnOff = null;
+    public SliderController radiator1TargetExtensionPositionInput = null;
+    public SliderController radiator2TargetExtensionPositionInput = null;
+    
+    
 
     //Public Information for the ship data
-    public float reactorCoreTemperature = 100.0f;//
-    public float reactorInnerLoopTemp = 100.0f;//
-    public float reactorOuterLoopTemp = 100.0f;//
-    public float reactorCoreInnerDelta = 0.0f;//
-    public float reactorInnerOuterDelta = 0.0f;//
+    public float reactorCoreTemperature = 100.0f;
+    public float reactorInnerLoopTemp = 100.0f;
+    public float reactorOuterLoopTemp = 100.0f;
+    public float reactorCoreInnerDelta = 0.0f;
+    public float reactorInnerOuterDelta = 0.0f;
 
-    public float reactorCorePressure = 1.0f;//
+    public float reactorCorePressure = 1.0f;
     public float reactorInnerLoopPressure = 1.0f;
     public float reactorOuterLoopPressure = 1.0f;
 
