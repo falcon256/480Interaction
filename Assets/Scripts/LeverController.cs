@@ -34,6 +34,6 @@ public class LeverController : MonoBehaviour
         float dif = leverAngleLimit * 2.0f;
         float position = currentAngle + leverAngleLimit;
         value = position / dif;
-        Debug.Log(value);
+        //Debug.Log(value);
     }
 }
