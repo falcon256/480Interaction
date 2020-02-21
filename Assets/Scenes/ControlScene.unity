@@ -1233,6 +1233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 349950852770319745, guid: cc9d53ae18b0e2649a0ce7c05f1456b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc9d53ae18b0e2649a0ce7c05f1456b1, type: 3}
 --- !u!4 &252248663 stripped
 Transform:
@@ -5699,7 +5700,7 @@ PrefabInstance:
     - target: {fileID: 2586426308397280100, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
       propertyPath: OwnershipTransfer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
@@ -5820,6 +5821,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2090891285}
   - component: {fileID: 2090891284}
+  - component: {fileID: 2090891287}
+  - component: {fileID: 2090891286}
   m_Layer: 0
   m_Name: ShipController
   m_TagString: Untagged
@@ -5905,6 +5908,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2090891286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090891283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+--- !u!114 &2090891287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090891283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 2090891286}
+  viewIdField: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &269188236323536986
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,7 +6159,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 349950852770319745, guid: cc9d53ae18b0e2649a0ce7c05f1456b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc9d53ae18b0e2649a0ce7c05f1456b1, type: 3}
 --- !u!4 &566478281780413702
 Transform:

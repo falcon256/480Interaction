@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class ShipController : MonoBehaviour
+[RequireComponent(typeof(PhotonView))]
+public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     //inputs
@@ -23,15 +27,15 @@ public class ShipController : MonoBehaviour
     public SwitchController reactorTurbine4OnOff = null;
     public SliderController radiator1TargetExtensionPositionInput = null;
     public SliderController radiator2TargetExtensionPositionInput = null;
-    
-    
+
+
 
     //Public Information for the ship data
-    public float reactorCoreTemperature = 100.0f;
-    public float reactorInnerLoopTemp = 100.0f;
-    public float reactorOuterLoopTemp = 100.0f;
-    public float reactorCoreInnerDelta = 0.0f;
-    public float reactorInnerOuterDelta = 0.0f;
+    [SerializeField] public float reactorCoreTemperature = 100.0f;
+    [SerializeField] public float reactorInnerLoopTemp = 100.0f;
+    [SerializeField] public float reactorOuterLoopTemp = 100.0f;
+    [SerializeField] public float reactorCoreInnerDelta = 0.0f;
+    [SerializeField] public float reactorInnerOuterDelta = 0.0f;
 
     public float reactorCorePressure = 1.0f;
     public float reactorInnerLoopPressure = 1.0f;
@@ -112,6 +116,31 @@ public class ShipController : MonoBehaviour
     public float getNaKPressure(float temp)
     {
         return Mathf.Pow(Mathf.Clamp(temp - 1057, 0, 100000.0f), 1.1f);
+    }
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        Debug.Log("OnPhotonSerializeView");
+        if (stream.IsWriting)
+        {
+            stream.SendNext(reactorCoreTemperature);
+        }
+        else
+        {
+            reactorCoreTemperature = (float)stream.ReceiveNext();
+        }
+    }
+
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        Debug.Log("OnPhotonSerializeView");
+        if (stream.IsWriting)
+        {
+            stream.SendNext(reactorCoreTemperature);
+        }
+        else
+        {
+            reactorCoreTemperature = (float)stream.ReceiveNext();
+        }
     }
 }
 
