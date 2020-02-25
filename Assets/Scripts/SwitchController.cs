@@ -35,7 +35,7 @@ public class SwitchController : MonoBehaviour
     {
         switchLever.GetComponent<Rigidbody>().transform.position = switchStartPosition;
         switchGuard.GetComponent<Rigidbody>().transform.position = guardStartPosition;
-        switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, Mathf.Clamp(switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z % 360.0f, 0, 180));
+        //switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, Mathf.Clamp(switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z % 360.0f, 0, 180));
         switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z + ((switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z - 180.0f) * -0.001f));
         if (switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > 180 && switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z < 360.0f + switchOffAngle)
         {
