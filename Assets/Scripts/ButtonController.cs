@@ -20,14 +20,17 @@ public class ButtonController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 buttonPos = buttonObject.GetComponent<Rigidbody>().transform.localPosition;
-        if (buttonPos.magnitude > 1.0f)
+        if (buttonPos.magnitude > 0.1f)
             isOn = true;
         else
             isOn = false;
         buttonPos.x = 0;
         buttonPos.z = 0;
-        buttonPos.y = Mathf.Lerp(buttonPos.y, buttonStartPosition.y, 0.1f);
+        buttonPos.y = Mathf.Lerp(buttonPos.y, buttonStartPosition.y, 0.2f);
+        buttonPos.y = Mathf.Clamp(buttonPos.y, buttonStartPosition.y - 0.2f, buttonStartPosition.y + 0.1f);
         buttonObject.GetComponent<Rigidbody>().transform.localPosition = buttonPos;
+        
+        
 
     }
 }

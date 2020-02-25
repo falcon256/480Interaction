@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -935,11 +935,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 155.9
+      value: -17.9
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -975,15 +975,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2015248, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_ClearFlags
@@ -1607,8 +1607,8 @@ Rigidbody:
   m_GameObject: {fileID: 263378603}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 100
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3599,13 +3599,13 @@ Rigidbody:
   m_GameObject: {fileID: 788484637}
   serializedVersion: 2
   m_Mass: 0.5
-  m_Drag: 1
-  m_AngularDrag: 1
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 62
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &788484640
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4822,6 +4822,7 @@ GameObject:
   - component: {fileID: 1418033279}
   - component: {fileID: 1418033278}
   - component: {fileID: 1418033282}
+  - component: {fileID: 1418033283}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -4855,7 +4856,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.09, y: 1, z: 4}
+  m_Size: {x: 13, y: 1, z: 4}
   m_Center: {x: 5, y: 5, z: 0}
 --- !u!65 &1418033279
 BoxCollider:
@@ -4868,8 +4869,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.36, y: 5, z: 1}
-  m_Center: {x: 5, y: 2, z: -1.92}
+  m_Size: {x: 13.36, y: 5, z: 2}
+  m_Center: {x: 5, y: 3, z: -1.92}
 --- !u!65 &1418033280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4881,8 +4882,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.36, y: 5, z: 1}
-  m_Center: {x: 5, y: 2, z: 1.92}
+  m_Size: {x: 13.36, y: 5, z: 2}
+  m_Center: {x: 5, y: 3, z: 1.92}
 --- !u!54 &1418033281
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4892,13 +4893,13 @@ Rigidbody:
   m_GameObject: {fileID: 1418033276}
   serializedVersion: 2
   m_Mass: 4
-  m_Drag: 1
-  m_AngularDrag: 1
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 62
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!135 &1418033282
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4912,6 +4913,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 4, y: 4, z: 0}
+--- !u!65 &1418033283
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418033276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1.8}
+  m_Center: {x: -1.51, y: 0, z: 0}
 --- !u!4 &1483928694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 462066, guid: ce816f2e6abb0504092c23ed9b970dfd,
@@ -5791,14 +5805,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813244113}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
+  m_Mass: 100
+  m_Drag: 10
+  m_AngularDrag: 100
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 62
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1839856210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 341548409262100749, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
@@ -6249,7 +6263,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 8.1, y: 8.09, z: 5.23}
-  m_Center: {x: 0, y: -2.5, z: 0}
+  m_Center: {x: 0, y: -3, z: 0}
 --- !u!54 &1749351371478572203
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6794,7 +6808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4128685068672001123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.23, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 263378604}
