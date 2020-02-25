@@ -30,9 +30,27 @@ public class SwitchController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        float currentGuardAngle = switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z;
+        if (currentGuardAngle > 180.0f)
+            currentGuardAngle -= 360.0f;
+
+        currentGuardAngle = Mathf.Clamp(currentGuardAngle, 0, 120);
+        switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, currentGuardAngle);
+        switchLever.GetComponent<Rigidbody>().transform.position = switchStartPosition;
+        switchGuard.GetComponent<Rigidbody>().transform.position = guardStartPosition;
+    }
 
     private void FixedUpdate()
     {
+        float currentGuardAngle = switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z;
+        if (currentGuardAngle > 180.0f)
+            currentGuardAngle -= 360.0f;
+
+        currentGuardAngle = Mathf.Clamp(currentGuardAngle, 0, 120);
+        switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, currentGuardAngle);
+
         switchLever.GetComponent<Rigidbody>().transform.position = switchStartPosition;
         switchGuard.GetComponent<Rigidbody>().transform.position = guardStartPosition;
         //switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, Mathf.Clamp(switchGuard.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z % 360.0f, 0, 180));
