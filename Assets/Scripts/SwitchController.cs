@@ -36,7 +36,7 @@ public class SwitchController : MonoBehaviour
         if (currentGuardAngle > 180.0f)
             currentGuardAngle -= 360.0f;
 
-        currentGuardAngle = Mathf.Clamp(currentGuardAngle, 0, 120);
+        currentGuardAngle = Mathf.Clamp(currentGuardAngle, 10, 90);
         switchGuard.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, currentGuardAngle);
         switchLever.GetComponent<Rigidbody>().transform.position = switchStartPosition;
         switchGuard.GetComponent<Rigidbody>().transform.position = guardStartPosition;
