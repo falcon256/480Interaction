@@ -22,7 +22,7 @@ public class LeverHandleController : MonoBehaviourPun
     public void updatePositionOnPeers()
     {
         PhotonView pv = this.photonView;
-        pv.RPC("handlePositionUpdate", RpcTarget.Others, (object)this.GetComponent<Rigidbody>().transform.localPosition, (object)this.GetComponent<Rigidbody>().transform.localRotation);
+        pv.RPC("handlePositionUpdate", RpcTarget.Others, (object)this.GetComponent<Rigidbody>().transform.localPosition, (object)this.GetComponent<Rigidbody>().transform.rotation);
     }
 
     private void OnCollisionEnter(Collision collision)
