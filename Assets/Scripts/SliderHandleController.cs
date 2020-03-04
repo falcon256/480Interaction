@@ -7,9 +7,15 @@ using Photon.Pun;
 public class SliderHandleController : MonoBehaviourPun
 {
     public SliderController parentSlider = null;
+    public int ticksUntilUpdate = 100;
     void FixedUpdate()
     {
-        
+        ticksUntilUpdate--;
+        if(ticksUntilUpdate<=0)
+        {
+            ticksUntilUpdate = Physics.defaultSolverIterations * 10;
+            updatePositionOnPeers();
+        }
     }
 
     public void updatePositionOnPeers()

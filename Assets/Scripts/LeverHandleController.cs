@@ -7,10 +7,17 @@ using Photon.Pun;
 public class LeverHandleController : MonoBehaviourPun
 {
     public LeverController parentLever = null;
+    public int ticksUntilUpdate = 100;
     void FixedUpdate()
     {
-
+        ticksUntilUpdate--;
+        if (ticksUntilUpdate <= 0)
+        {
+            ticksUntilUpdate = Physics.defaultSolverIterations * 10;
+            updatePositionOnPeers();
+        }
     }
+
 
     public void updatePositionOnPeers()
     {
