@@ -397,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 5371294653469375094, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
       propertyPath: m_Name
-      value: SliderBaseAndHandle Variant
+      value: SliderBaseAndHandleWithDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 8994240271183628389, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
@@ -459,12 +459,19 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2586426308397280100, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5371294653469375095, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
       propertyPath: outputTMP
       value: 
       objectReference: {fileID: 539463062}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7084255938434510393, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
+    - {fileID: 4064495190348877389, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
 --- !u!114 &163004225737359324 stripped
 MonoBehaviour:

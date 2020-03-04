@@ -12,6 +12,7 @@ public class SliderController : MonoBehaviour
     public float output = 0;
     public TextMeshPro outputTMP = null;
     public bool doReset = false;
+    public bool doDebugSend = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class SliderController : MonoBehaviour
         output = (handlePos.z + 25.0f)*2.0f;
         handle.GetComponent<Rigidbody>().transform.localPosition = handlePos;
         outputTMP.text = string.Format("{0:00.0}", output);
+        outputTMP.color = getColorValue(output);
         if(doReset)
         {
             if(handle.GetComponent<Rigidbody>().transform.localPosition.z<=-25.0f)
@@ -37,8 +39,23 @@ public class SliderController : MonoBehaviour
             else
             {
                 handle.GetComponent<Rigidbody>().transform.localPosition = handle.GetComponent<Rigidbody>().transform.localPosition + new Vector3(0, 0, -0.1f);
+                handle.GetComponent<SliderHandleController>().updatePositionOnPeers();
             }
         }
+        if(doDebugSend)
+        {
+            doDebugSend = false;
+            handle.GetComponent<SliderHandleController>().updatePositionOnPeers();
+        }
+    }
+    public Color getColorValue(float v)
+    {
+        //Debug.Log(v);
+        //v = Mathf.Clamp(v, -0.5f, 0.5f);
+        v *= 0.01f;
+        if (v > 0.5f)
+            return Color.Lerp(Color.green, Color.red, v - 0.5f);
+        return Color.Lerp(Color.green, Color.blue, 0.5f - v);
     }
 
     /* our other code makes this not needed.

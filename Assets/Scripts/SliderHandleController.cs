@@ -15,7 +15,8 @@ public class SliderHandleController : MonoBehaviourPun
     public void updatePositionOnPeers()
     {
         PhotonView pv = this.photonView;
-        pv.RPC("handlePositionUpdate", RpcTarget.Others, (object)this.GetComponent<Rigidbody>().transform);
+        pv.RPC("handlePositionUpdate", RpcTarget.Others, (object)this.GetComponent<Rigidbody>().transform.localPosition, (object)this.GetComponent<Rigidbody>().transform.localRotation);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,13 +35,11 @@ public class SliderHandleController : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void handlePositionUpdate(Transform trans)
+    public void handlePositionUpdate(Vector3 pos, Quaternion rot)
     {
         Rigidbody rb = this.GetComponent<Rigidbody>();
-        rb.transform.localPosition = trans.localPosition;
-        rb.transform.localRotation = trans.localRotation;
-        rb.transform.position = trans.position;
-        rb.transform.rotation = trans.rotation;
+        rb.transform.localPosition = pos;
+        rb.transform.localRotation = rot;
     }
 
 }
