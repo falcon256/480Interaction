@@ -11,7 +11,7 @@ public class ButtonController : MonoBehaviour
     public Color textOnColor = Color.white;
     public Vector3 buttonStartPosition = Vector3.zero;
     public bool isOn = true;
-    public float buttonMaxDelta = 0.1f;
+    public float buttonMaxDelta = 0.2f;
     private float buttonLastPosition = 0;
     void Start()
     {
@@ -29,14 +29,14 @@ public class ButtonController : MonoBehaviour
             buttonPos.y = buttonLastPosition + buttonMaxDelta;
         if (buttonDelta < -buttonMaxDelta)
             buttonPos.y = buttonLastPosition - buttonMaxDelta;
-        if (buttonPos.magnitude > 0.1f)
+        if (buttonDelta < -0.1f)
             isOn = true;
         else
             isOn = false;
         buttonPos.x = 0;
         buttonPos.z = 0;
         buttonPos.y = Mathf.Lerp(buttonPos.y, buttonStartPosition.y, 0.2f);
-        buttonPos.y = Mathf.Clamp(buttonPos.y, buttonStartPosition.y - 0.2f, buttonStartPosition.y + 0.1f);
+        buttonPos.y = Mathf.Clamp(buttonPos.y, buttonStartPosition.y - 0.2f, buttonStartPosition.y + 0.01f);
         buttonObject.GetComponent<Rigidbody>().transform.localPosition = buttonPos;
         buttonLastPosition = buttonPos.y;
         

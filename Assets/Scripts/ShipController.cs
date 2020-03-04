@@ -92,27 +92,39 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
     
     void FixedUpdate()
     {
-
-        reactorControlRodPosition = Mathf.Lerp(reactorControlRodPosition,reactorControlRodPositionInput.output*2,0.001f);
-        reactorFlux = Mathf.Lerp(reactorFlux, (((reactorModeratorPosition * reactorControlRodPosition * reactorFuelLevel * 0.001f) + reactorDecayProducts + (reactorFlux*0.5f)) - reactorXenonBuildup),0.01f);
-        reactorCoreTemperature += reactorFlux*0.01f;
+        doReactorUpdate();
+    
+    }
+    
+    private void doReactorUpdate()
+    {
+        reactorControlRodPosition = Mathf.Lerp(reactorControlRodPosition, reactorControlRodPositionInput.output * 2, 0.001f);
+        reactorFlux = Mathf.Lerp(reactorFlux, (((reactorModeratorPosition * reactorControlRodPosition * reactorFuelLevel * 0.001f) + reactorDecayProducts + (reactorFlux * 0.5f)) - reactorXenonBuildup), 0.01f);
+        reactorCoreTemperature += reactorFlux * 0.01f;
         reactorCoreTemperature += Random.Range(-1.0f, 1.0f);
         //reactorCoreTemperature += Mathf.Sin(Time.realtimeSinceStartup*0.5f)*5.0f;
         reactorCoreTemperature *= 0.9999f;
         reactorCoreTemperature = Mathf.Clamp(reactorCoreTemperature, 0, 100000.0f);
 
-        reactorCoreInnerDelta  = reactorCoreTemperature - reactorInnerLoopTemp;
+        reactorCoreInnerDelta = reactorCoreTemperature - reactorInnerLoopTemp;
         reactorInnerOuterDelta = reactorInnerLoopTemp - reactorOuterLoopTemp;
 
-        reactorCoreTemperature -= reactorCoreInnerDelta  * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM+ reactorCoreLoopPump2RPM);
-        reactorInnerLoopTemp   += reactorCoreInnerDelta  * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM);
-        reactorInnerLoopTemp   -= reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM);
-        reactorOuterLoopTemp   += reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM);
+        reactorCoreTemperature -= reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM);
+        reactorInnerLoopTemp += reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM);
+        reactorInnerLoopTemp -= reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM);
+        reactorOuterLoopTemp += reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM);
 
         reactorCorePressure = (reactorCorePressure * 0.99f) + (reactorCoreLoopPump1RPM * getNaKPressure(reactorCoreTemperature)) + (reactorCoreLoopPump2RPM * getNaKPressure(reactorCoreTemperature)) + reactorFlux;
         reactorInnerLoopPressure = (reactorInnerLoopPressure * 0.99f) + (reactorInnerLoopPump1RPM * getNaKPressure(reactorInnerLoopTemp)) + (reactorInnerLoopPump2RPM * getNaKPressure(reactorInnerLoopTemp));
 
+        if(reactorEmergencySCRAM.isOn)
+        {
+            reactorControlRodPositionInput.doReset = true;
+            reactorModeratorRodPositionInput.doReset = true;
+        }
     }
+
+
     public float getNaKPressure(float temp)
     {
         return Mathf.Pow(Mathf.Clamp(temp - 1057, 0, 100000.0f), 1.1f);

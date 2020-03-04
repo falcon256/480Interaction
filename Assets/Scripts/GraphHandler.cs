@@ -51,12 +51,14 @@ public class GraphHandler : MonoBehaviour
         outputGraph.line.option.color = g;
         textValue.text = "- " + string.Format("{0:0.00}", lastPoint);
         textValue.transform.position = outputGraph.transform.position + new Vector3(horizOffset + controlPoints.Count * ratio, Mathf.Clamp(verticalOffset + (controlPoints[controlPoints.Count - 1] * verticalScale * multiplier), 0.0f, 31.0f), 0);
-        sideLabelText.color = largeTextValue.color = textValue.color = getColorValue((controlPoints[controlPoints.Count - 1] * verticalScale * multiplier) / 16.0f);
+        sideLabelText.color = largeTextValue.color = textValue.color = getColorValue(((controlPoints[controlPoints.Count - 1] * verticalScale * multiplier) / 16.0f));
         largeTextValue.text = componentString + ": " + string.Format("{0:0.00}", lastPoint) + " " + unitString;
         backgroundImage.color = getBackgroundColorValue((controlPoints[controlPoints.Count - 1] * verticalScale * multiplier) / 16.0f);
     }
     public Color getColorValue(float v)
     {
+        //Debug.Log(v);
+        //v = Mathf.Clamp(v, -0.5f, 0.5f);
         if (v > 0.5f)
             return Color.Lerp(Color.green, Color.red, v - 0.5f);
         return Color.Lerp(Color.green, Color.blue, 0.5f - v);
