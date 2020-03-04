@@ -9,7 +9,7 @@ public class LeverController : MonoBehaviour
     public GameObject leverGO;
     public float value;
     public float maxDelta = 1.0f;
-    private float previousAngle = 0;
+    public float previousAngle = 0;
     // Start is called before the first frame update
     void Start()
     {
