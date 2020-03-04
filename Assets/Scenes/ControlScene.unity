@@ -6142,6 +6142,7 @@ GameObject:
   - component: {fileID: 1813244116}
   - component: {fileID: 1813244118}
   - component: {fileID: 1813244120}
+  - component: {fileID: 1813244121}
   - component: {fileID: 1813244119}
   m_Layer: 0
   m_Name: LeverRotationGO
@@ -6260,6 +6261,20 @@ MonoBehaviour:
   viewIdField: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1813244121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813244113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11899c140a07e764e976c743b5d46655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentLever: {fileID: 4773162180005842776}
+  ticksUntilUpdate: 100
 --- !u!114 &1839856210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 341548409262100749, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
