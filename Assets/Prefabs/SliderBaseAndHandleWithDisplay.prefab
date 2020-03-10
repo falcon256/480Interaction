@@ -368,12 +368,12 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8170363621818708064}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2ece05b30e480914da2139a377a9b49e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 3, z: 3}
-  m_Center: {x: 0, y: 2.5, z: 3.5}
+  m_Size: {x: 2, y: 3, z: 7.5}
+  m_Center: {x: 0, y: 2.5, z: 1.5}
 --- !u!114 &4155486624227933794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,6 +470,36 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092102, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092102, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092102, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092102, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092102, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092102, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 4155486623864092105, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
       propertyPath: m_Radius
@@ -493,6 +523,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7084255938434510393, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
     - {fileID: 4064495190348877389, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
+    - {fileID: 4155486623864092105, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
 --- !u!114 &163004225737359324 stripped
 MonoBehaviour:

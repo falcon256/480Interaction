@@ -72,15 +72,21 @@ public class OvrAvatarSkinnedMeshRenderPBSComponent : OvrAvatarRenderComponent {
                     CapsuleCollider collider = transform.gameObject.AddComponent<CapsuleCollider>();
                     if (!transform.name.EndsWith("1"))
                     {
-                        collider.radius = Phalanges.Radius * 1.1f;
-                        collider.height = Phalanges.Height * 1.1f;
+                        collider.radius = Phalanges.Radius * 1.5f;
+                        collider.height = Phalanges.Height;
                         collider.center = Phalanges.GetCenter(transform.name.Contains("_l_"));
                         collider.direction = 0;
+                        Rigidbody rb = transform.gameObject.AddComponent<Rigidbody>();
+                        rb.isKinematic = true;
+                        rb.interpolation = RigidbodyInterpolation.Extrapolate;
+                        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+                        rb.useGravity = false;
+
                     }
                     else
                     {
-                        collider.radius = Metacarpals.Radius * 1.1f;
-                        collider.height = Metacarpals.Height * 1.1f;
+                        collider.radius = Metacarpals.Radius * 1.5f;
+                        collider.height = Metacarpals.Height;
                         collider.center = Metacarpals.GetCenter(transform.name.Contains("_l_"));
                         collider.direction = 0;
                     }
@@ -89,7 +95,7 @@ public class OvrAvatarSkinnedMeshRenderPBSComponent : OvrAvatarRenderComponent {
             else if (transform.name.Contains("grip"))
             {
                 SphereCollider collider = transform.gameObject.AddComponent<SphereCollider>();
-                collider.radius = 0.04f;
+                collider.radius = 0.06f;
                 collider.center = new Vector3(((transform.name.Contains("_l_")) ? -1 : 1) * 0.01f, 0.01f, 0.02f);
             }
         }
