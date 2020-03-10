@@ -5,12 +5,12 @@ PhysicsManager:
   m_ObjectHideFlags: 0
   serializedVersion: 13
   m_Gravity: {x: 0, y: -9.81, z: 0}
-  m_DefaultMaterial: {fileID: 13400000, guid: a588d4801192786408c85d77822ab0c8, type: 2}
+  m_DefaultMaterial: {fileID: 13400000, guid: 2ece05b30e480914da2139a377a9b49e, type: 2}
   m_BounceThreshold: 2
   m_SleepThreshold: 0.005
   m_DefaultContactOffset: 0.01
-  m_DefaultSolverIterations: 30
-  m_DefaultSolverVelocityIterations: 4
+  m_DefaultSolverIterations: 60
+  m_DefaultSolverVelocityIterations: 5
   m_QueriesHitBackfaces: 0
   m_QueriesHitTriggers: 1
   m_EnableAdaptiveForce: 1
@@ -30,6 +30,6 @@ PhysicsManager:
     m_Extent: {x: 250, y: 250, z: 250}
   m_WorldSubdivisions: 8
   m_FrictionType: 2
-  m_EnableEnhancedDeterminism: 1
+  m_EnableEnhancedDeterminism: 0
   m_EnableUnifiedHeightmaps: 1
   m_DefaultMaxAngularSpeed: 7

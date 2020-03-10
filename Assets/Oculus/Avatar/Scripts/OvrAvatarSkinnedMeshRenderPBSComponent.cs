@@ -72,15 +72,15 @@ public class OvrAvatarSkinnedMeshRenderPBSComponent : OvrAvatarRenderComponent {
                     CapsuleCollider collider = transform.gameObject.AddComponent<CapsuleCollider>();
                     if (!transform.name.EndsWith("1"))
                     {
-                        collider.radius = Phalanges.Radius;
-                        collider.height = Phalanges.Height;
+                        collider.radius = Phalanges.Radius * 1.1f;
+                        collider.height = Phalanges.Height * 1.1f;
                         collider.center = Phalanges.GetCenter(transform.name.Contains("_l_"));
                         collider.direction = 0;
                     }
                     else
                     {
-                        collider.radius = Metacarpals.Radius;
-                        collider.height = Metacarpals.Height;
+                        collider.radius = Metacarpals.Radius * 1.1f;
+                        collider.height = Metacarpals.Height * 1.1f;
                         collider.center = Metacarpals.GetCenter(transform.name.Contains("_l_"));
                         collider.direction = 0;
                     }

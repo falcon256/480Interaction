@@ -8,7 +8,7 @@ public class LeverController : MonoBehaviour
     private float leverAngleLimit = 80.0f;
     public GameObject leverGO;
     public float value;
-    public float maxDelta = 1.0f;
+    public float maxDelta = 10.0f;
     public float previousAngle = 0;
     // Start is called before the first frame update
     void Start()

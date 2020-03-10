@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentSlider: {fileID: 163004225737359324}
+  ticksUntilUpdate: 100
 --- !u!1001 &5244924991233410475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,6 +395,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5371294653469375095, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: outputTMP
+      value: 
+      objectReference: {fileID: 539463062}
     - target: {fileID: 5371294653469375094, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
       propertyPath: m_Name
@@ -464,11 +470,26 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5371294653469375095, guid: 8fe264d1eb946ca488015321bc9969f7,
+    - target: {fileID: 4155486623864092105, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
-      propertyPath: outputTMP
-      value: 
-      objectReference: {fileID: 539463062}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092105, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_Height
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092105, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155486623864092105, guid: 8fe264d1eb946ca488015321bc9969f7,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7084255938434510393, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
     - {fileID: 4064495190348877389, guid: 8fe264d1eb946ca488015321bc9969f7, type: 3}
