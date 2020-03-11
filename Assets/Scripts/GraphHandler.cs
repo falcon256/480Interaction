@@ -18,7 +18,7 @@ public class GraphHandler : MonoBehaviour
     public Image backgroundImage = null;
     public string componentString = "";
     public string unitString = "";
-
+    public Light pointlight = null;
 
     private List<float> controlPoints = null;
 
@@ -54,6 +54,7 @@ public class GraphHandler : MonoBehaviour
         sideLabelText.color = largeTextValue.color = textValue.color = getColorValue(((controlPoints[controlPoints.Count - 1] * verticalScale * multiplier) / 16.0f));
         largeTextValue.text = componentString + ": " + string.Format("{0:0.00}", lastPoint) + " " + unitString;
         backgroundImage.color = getBackgroundColorValue((controlPoints[controlPoints.Count - 1] * verticalScale * multiplier) / 16.0f);
+        pointlight.color = backgroundImage.color;
     }
     public Color getColorValue(float v)
     {

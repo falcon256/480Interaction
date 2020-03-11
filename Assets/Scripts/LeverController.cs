@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using TMPro;
 
 public class LeverController : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class LeverController : MonoBehaviour
     public float value;
     public float maxDelta = 10.0f;
     public float previousAngle = 0;
+    public TextMeshPro outputTMP = null;
+    public Light pointlight = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +52,19 @@ public class LeverController : MonoBehaviour
         float dif = leverAngleLimit * 2.0f;
         float position = currentAngle + leverAngleLimit;
         value = position / dif;
+
+        outputTMP.text = string.Format("{0:00.0}", value * 100.0f);
+        outputTMP.color = getColorValue(value * 100.0f);
+        pointlight.color = outputTMP.color;
         //Debug.Log(value);
+    }
+    public Color getColorValue(float v)
+    {
+        //Debug.Log(v);
+        //v = Mathf.Clamp(v, -0.5f, 0.5f);
+        v *= 0.01f;
+        if (v > 0.5f)
+            return Color.Lerp(Color.green, Color.red, v - 0.5f);
+        return Color.Lerp(Color.green, Color.blue, 0.5f - v);
     }
 }

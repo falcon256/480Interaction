@@ -13,6 +13,7 @@ public class SliderController : MonoBehaviour
     public TextMeshPro outputTMP = null;
     public bool doReset = false;
     public bool doDebugSend = false;
+    public Light pointlight = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,8 @@ public class SliderController : MonoBehaviour
         handle.GetComponent<Rigidbody>().transform.localPosition = handlePos;
         outputTMP.text = string.Format("{0:00.0}", output);
         outputTMP.color = getColorValue(output);
-        if(doReset)
+        pointlight.color = outputTMP.color;
+        if (doReset)
         {
             if(handle.GetComponent<Rigidbody>().transform.localPosition.z<=-25.0f)
             {

@@ -14,6 +14,7 @@ public class SwitchController : MonoBehaviour
     public GameObject switchLever = null;
     public GameObject switchGuard = null;
     public bool on = false;
+    public Light pointlight = null;
 
     // Start is called before the first frame update
     void Start()
@@ -68,12 +69,14 @@ public class SwitchController : MonoBehaviour
         {
             switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, 360.0f + switchOffAngle);
             on = false;
+            pointlight.color = Color.red;
             return;
         }
         if (switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z < 180 && switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > switchOnAngle)
         {
             switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchOnAngle);
             on = true;
+            pointlight.color = Color.green;
             return;
         }
         
