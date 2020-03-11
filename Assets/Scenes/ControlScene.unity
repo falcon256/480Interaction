@@ -2341,6 +2341,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 571472004}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &571472006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3629945716926042288, guid: f517eb9471bbcf74f8962407b3f90677,
+    type: 3}
+  m_PrefabInstance: {fileID: 571472004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f35a30e7de26c74f801402faed921c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &576508163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2479,6 +2491,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoreLoopPump2
       objectReference: {fileID: 0}
+    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: outputTMP
+      value: 
+      objectReference: {fileID: 761024942}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2493390808693674201, guid: 473442d2cf9c76a4fba28f46e4b18325,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2544,31 +2581,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: outputTMP
-      value: 
-      objectReference: {fileID: 761024942}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473442d2cf9c76a4fba28f46e4b18325, type: 3}
 --- !u!4 &591612784 stripped
@@ -5377,6 +5389,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: InnerLoopPump1
       objectReference: {fileID: 0}
+    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: outputTMP
+      value: 
+      objectReference: {fileID: 1258386651}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2493390808693674201, guid: 473442d2cf9c76a4fba28f46e4b18325,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5442,31 +5479,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: outputTMP
-      value: 
-      objectReference: {fileID: 1258386651}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473442d2cf9c76a4fba28f46e4b18325, type: 3}
 --- !u!4 &1196159838 stripped
@@ -6970,6 +6982,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoreLoopPump1
       objectReference: {fileID: 0}
+    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: outputTMP
+      value: 
+      objectReference: {fileID: 187003108}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2493390808693674201, guid: 473442d2cf9c76a4fba28f46e4b18325,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7035,31 +7072,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: outputTMP
-      value: 
-      objectReference: {fileID: 187003108}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473442d2cf9c76a4fba28f46e4b18325, type: 3}
 --- !u!4 &1527919243 stripped
@@ -7451,6 +7463,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: InnerLoopPump2
       objectReference: {fileID: 0}
+    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: outputTMP
+      value: 
+      objectReference: {fileID: 1631804348}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2493390808693674201, guid: 473442d2cf9c76a4fba28f46e4b18325,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7516,31 +7553,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268089104558920102, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: outputTMP
-      value: 
-      objectReference: {fileID: 1631804348}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473442d2cf9c76a4fba28f46e4b18325, type: 3}
 --- !u!4 &1575411387 stripped
@@ -7783,6 +7795,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1736878269}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1736878271 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3629945716926042288, guid: f517eb9471bbcf74f8962407b3f90677,
+    type: 3}
+  m_PrefabInstance: {fileID: 1736878269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f35a30e7de26c74f801402faed921c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1772181152 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 341548409262100748, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
@@ -7906,6 +7930,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1888390908}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1888390910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3629945716926042288, guid: f517eb9471bbcf74f8962407b3f90677,
+    type: 3}
+  m_PrefabInstance: {fileID: 1888390908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f35a30e7de26c74f801402faed921c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1947770952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8234,6 +8270,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2048932109}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2048932111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3629945716926042288, guid: f517eb9471bbcf74f8962407b3f90677,
+    type: 3}
+  m_PrefabInstance: {fileID: 2048932109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f35a30e7de26c74f801402faed921c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2090891283
 GameObject:
   m_ObjectHideFlags: 0
@@ -8276,10 +8324,10 @@ MonoBehaviour:
   reactorCoreLoopPump2OnOff: {fileID: 1522890280}
   reactorInnerLoopPump1OnOff: {fileID: 1010587523}
   reactorInnerLoopPump2OnOff: {fileID: 1492384940}
-  reactorTurbine1OnOff: {fileID: 0}
-  reactorTurbine2OnOff: {fileID: 0}
-  reactorTurbine3OnOff: {fileID: 0}
-  reactorTurbine4OnOff: {fileID: 0}
+  reactorTurbine1OnOff: {fileID: 1736878271}
+  reactorTurbine2OnOff: {fileID: 1888390910}
+  reactorTurbine3OnOff: {fileID: 2048932111}
+  reactorTurbine4OnOff: {fileID: 571472006}
   radiator1TargetExtensionPositionInput: {fileID: 0}
   radiator2TargetExtensionPositionInput: {fileID: 0}
   reactorCoreTemperature: 100
@@ -8982,6 +9030,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeverPotentiometer
       objectReference: {fileID: 0}
+    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
+        type: 3}
+      propertyPath: outputTMP
+      value: 
+      objectReference: {fileID: 1567790195}
     - target: {fileID: 2493390808693674201, guid: 473442d2cf9c76a4fba28f46e4b18325,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9047,11 +9100,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1495498963241919173, guid: 473442d2cf9c76a4fba28f46e4b18325,
-        type: 3}
-      propertyPath: outputTMP
-      value: 
-      objectReference: {fileID: 1567790195}
     - target: {fileID: 6202437773613280912, guid: 473442d2cf9c76a4fba28f46e4b18325,
         type: 3}
       propertyPath: m_Range
