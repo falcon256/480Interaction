@@ -69,14 +69,16 @@ public class SwitchController : MonoBehaviour
         {
             switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, 360.0f + switchOffAngle);
             on = false;
-            pointlight.color = Color.red;
+            if(pointlight)
+                pointlight.color = Color.red;
             return;
         }
         if (switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z < 180 && switchLever.GetComponent<Rigidbody>().transform.localRotation.eulerAngles.z > switchOnAngle)
         {
             switchLever.GetComponent<Rigidbody>().transform.localRotation = Quaternion.Euler(0, 0, switchOnAngle);
             on = true;
-            pointlight.color = Color.green;
+            if(pointlight)
+                pointlight.color = Color.green;
             return;
         }
         

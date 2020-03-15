@@ -8335,15 +8335,22 @@ MonoBehaviour:
   reactorOuterLoopTemp: 100
   reactorCoreInnerDelta: 0
   reactorInnerOuterDelta: 0
+  reactorCoreHealth: 1
+  reactorCoreLoopHealth: 1
+  reactorCoreInnerHeatExchangerHealth: 1
+  reactorInnerOuterHeatExchangerHealth: 1
   reactorCorePressure: 1
   reactorInnerLoopPressure: 1
   reactorOuterLoopPressure: 1
-  reactorCoreInnerHeatExchangerEfficiency: 0.001
+  reactorCoreInnerHeatExchangerEfficiency: 0.003
   reactorInnerOuterHeatExchangerEfficiency: 0.002
   reactorCoreLoopPump1RPM: 1
   reactorCoreLoopPump2RPM: 1
   reactorInnerLoopPump1RPM: 1
   reactorInnerLoopPump2RPM: 1
+  reactorCoreLoopFlowLPS: 0
+  reactorInnerLoopFlowLPS: 0
+  reactorOuterLoopFlowLPS: 0
   reactorTurbine1RPM: 1
   reactorTurbine2RPM: 1
   reactorTurbine3RPM: 1
@@ -8365,6 +8372,7 @@ MonoBehaviour:
   radiator2Extension: 1
   radiator1Temperature: 1
   radiator2Temperature: 1
+  autoSCRAM: 1
 --- !u!4 &2090891285
 Transform:
   m_ObjectHideFlags: 0
@@ -8561,6 +8569,11 @@ PrefabInstance:
       propertyPath: pointlight
       value: 
       objectReference: {fileID: 341548407987452415}
+    - target: {fileID: 341548409262100749, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: graphScale
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723b22ed0e0c81f4b814d91b33b3f71d, type: 3}
 --- !u!108 &341548407987452415 stripped
