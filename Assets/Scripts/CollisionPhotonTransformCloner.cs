@@ -4,17 +4,16 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 
-public class SliderHandleController : MonoBehaviourPun
+public class CollisionPhotonTransformCloner : MonoBehaviourPun
 {
-    public SliderController parentSlider = null;
     public int ticksUntilUpdate = 100;
     void FixedUpdate()
     {
         ticksUntilUpdate--;
-        if(ticksUntilUpdate<=0)
+        if (ticksUntilUpdate <= 0)
         {
             ticksUntilUpdate = Physics.defaultSolverIterations * 10;
-            if(PhotonNetwork.IsMasterClient)
+            if (PhotonNetwork.IsMasterClient)
                 updatePositionOnPeers();
         }
     }
@@ -22,7 +21,7 @@ public class SliderHandleController : MonoBehaviourPun
     public void updatePositionOnPeers()
     {
         PhotonView pv = this.photonView;
-        pv.RPC("handlePositionUpdate", RpcTarget.Others, (object)this.GetComponent<Rigidbody>().transform.localPosition, (object)this.GetComponent<Rigidbody>().transform.localRotation);
+        pv.RPC("transformPositionUpdate", RpcTarget.Others, (object)this.GetComponent<Rigidbody>().transform.localPosition, (object)this.GetComponent<Rigidbody>().transform.localRotation);
 
     }
 
@@ -42,7 +41,7 @@ public class SliderHandleController : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void handlePositionUpdate(Vector3 pos, Quaternion rot)
+    public void transformPositionUpdate(Vector3 pos, Quaternion rot)
     {
         Rigidbody rb = this.GetComponent<Rigidbody>();
         rb.transform.localPosition = pos;

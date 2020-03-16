@@ -35,5 +35,6 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - handlePositionUpdate
+  - transformPositionUpdate
   DisableAutoOpenWizard: 1
   ShowSettings: 1
