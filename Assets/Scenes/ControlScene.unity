@@ -137,9 +137,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
-  m_Height: 1
+  m_Height: 0.2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.3, z: 0}
 --- !u!1001 &22107362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,27 +244,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: Power Production kW
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -472,27 +477,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: 'Turbine #2 RPM X 1000'
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -682,27 +692,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: Decay Products
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -954,13 +969,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 52.51
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1032,6 +1051,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: resetTrackerOnLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: _reorientHMDOnControllerRecenter
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
@@ -1377,27 +1400,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: 'Turbine #1 RPM X 1000'
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -1950,32 +1978,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_text
-      value: Pressure kPa
+      value: 'Turbine #4 RPM X 1000'
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -2860,27 +2888,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: Outer Cooling Loop Pressure kPa
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -4089,27 +4122,37 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: "Reactor Flux \xD710^17 cm^\u22122s^\u22121"
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_textInfo.materialCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -4278,12 +4321,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723b22ed0e0c81f4b814d91b33b3f71d, type: 3}
+--- !u!224 &764285401 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 341548408334802762, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+    type: 3}
+  m_PrefabInstance: {fileID: 764285400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &764285402 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 341548409262100748, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
     type: 3}
   m_PrefabInstance: {fileID: 764285400}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &764285403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+    type: 3}
+  m_PrefabInstance: {fileID: 764285400}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &783185460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4299,32 +4360,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_text
-      value: Pressure kPa
+      value: Xenon Buildup
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -4719,27 +4780,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: Inner Cooling Loop Pressure kPa
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -4904,7 +4970,7 @@ PrefabInstance:
     - target: {fileID: 341548409262100749, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: unitString
-      value: Kpa
+      value: kPa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723b22ed0e0c81f4b814d91b33b3f71d, type: 3}
@@ -5687,27 +5753,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: Power Draw kW
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -5897,27 +5968,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: Fuel Depletion %
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -7296,27 +7372,32 @@ PrefabInstance:
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 341548408334802763, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
+        type: 3}
+      propertyPath: m_text
+      value: 'Turbine #3 RPM X 1000'
       objectReference: {fileID: 0}
     - target: {fileID: 341548408868335541, guid: 723b22ed0e0c81f4b814d91b33b3f71d,
         type: 3}
@@ -7963,6 +8044,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90899a6615ccec84db97170c249c73b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1797093344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797093345}
+  - component: {fileID: 1797093347}
+  - component: {fileID: 1797093346}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [LiberationSans SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1797093345
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797093344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 764285401}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1797093346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797093344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 3.078125
+  m_canvasRenderer: {fileID: 1797093347}
+  m_TextComponent: {fileID: 764285403}
+  m_materialReferenceIndex: 1
+--- !u!222 &1797093347
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797093344}
+  m_CullTransparentMesh: 0
 --- !u!4 &1811060335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4471613377008970, guid: ce816f2e6abb0504092c23ed9b970dfd,

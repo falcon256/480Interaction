@@ -5,6 +5,13 @@ using Photon.Pun;
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
+
+//
+// I'M VERY SORRY THIS LOGIC IS MONOLITHIC.
+// well, not really, this is my norm until I go through and clean it up.
+// 99% of this will wind up being placed into a reactorController class, and the ship will have a reactor.
+//
+
 [RequireComponent(typeof(PhotonView))]
 public class ShipController : MonoBehaviourPun
 {
@@ -96,7 +103,7 @@ public class ShipController : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        autoSCRAM = true;
+        autoSCRAM = true;// turn off the reactor on startup.
     }
 
     // Update is called once per frame
@@ -116,21 +123,44 @@ public class ShipController : MonoBehaviourPun
                 updateDataOnPeers();
         }
     }
-    
+    //Don't try to understand the math in here, it is all a little odd, and I made it up from scratch.
+    //there are a few bits of code that I made that are based on actual physics in this file though.
     private void doReactorUpdate()
     {
+        //Do decay products and poisoning.
+        reactorDecayProducts += reactorFlux * 0.0001f;
+        reactorXenonBuildup -= reactorFlux * 0.0001f;
+        reactorXenonBuildup += reactorDecayProducts * 0.0001f;
+        reactorDecayProducts -= reactorDecayProducts * 0.0001f;
+        if (reactorXenonBuildup < 0)
+            reactorXenonBuildup = 0;
         reactorControlRodPosition = Mathf.Lerp(reactorControlRodPosition, reactorControlRodPositionInput.output * 2, 0.001f);
         reactorModeratorPosition = Mathf.Lerp(reactorModeratorPosition, reactorModeratorRodPositionInput.output * 2, 0.001f);
-        reactorFlux = Mathf.Lerp(reactorFlux, (((reactorModeratorPosition * reactorControlRodPosition * reactorFuelLevel * 0.0001f * reactorCoreHealth) + reactorDecayProducts + (reactorFlux * 0.5f)) - reactorXenonBuildup), 0.01f);
+        reactorFlux = Mathf.Max(0.1f,Mathf.Lerp(reactorFlux, (((reactorModeratorPosition * reactorControlRodPosition * reactorFuelLevel * 0.0001f * reactorCoreHealth) + (reactorDecayProducts*0.001f) + (reactorFlux * 0.5f)) - reactorXenonBuildup), 0.01f));
         reactorCoreTemperature += reactorFlux * 0.01f;
         reactorCoreTemperature += Random.Range(-1.0f, 1.0f);
         reactorCoreTemperature *= 0.9999f;
         reactorCoreTemperature = Mathf.Clamp(reactorCoreTemperature, 0, 100000.0f);
 
-        reactorCoreLoopPump1RPM = Mathf.Lerp(reactorCoreLoopPump1RPM, reactorCoreLoopPump1PositionInput.value, 0.01f);
-        reactorCoreLoopPump2RPM = Mathf.Lerp(reactorCoreLoopPump2RPM, reactorCoreLoopPump2PositionInput.value, 0.01f);
-        reactorInnerLoopPump1RPM = Mathf.Lerp(reactorInnerLoopPump1RPM, reactorInnerLoopPump1PositionInput.value, 0.01f);
-        reactorInnerLoopPump2RPM = Mathf.Lerp(reactorInnerLoopPump2RPM, reactorInnerLoopPump2PositionInput.value, 0.01f);
+        if (reactorCoreLoopPump1OnOff && reactorCoreLoopPump1OnOff.on)
+            reactorCoreLoopPump1RPM = Mathf.Lerp(reactorCoreLoopPump1RPM, reactorCoreLoopPump1PositionInput.value, 0.01f);
+        else
+            reactorCoreLoopPump1RPM *= 0.99f;
+
+        if (reactorCoreLoopPump2OnOff && reactorCoreLoopPump2OnOff.on)
+            reactorCoreLoopPump2RPM = Mathf.Lerp(reactorCoreLoopPump2RPM, reactorCoreLoopPump2PositionInput.value, 0.01f);
+        else
+            reactorCoreLoopPump2RPM *= 0.99f;
+
+        if (reactorInnerLoopPump1OnOff && reactorInnerLoopPump1OnOff.on)
+            reactorInnerLoopPump1RPM = Mathf.Lerp(reactorInnerLoopPump1RPM, reactorInnerLoopPump1PositionInput.value, 0.01f);
+        else
+            reactorInnerLoopPump1RPM *= 0.99f;
+
+        if (reactorInnerLoopPump2OnOff && reactorInnerLoopPump2OnOff.on)
+            reactorInnerLoopPump2RPM = Mathf.Lerp(reactorInnerLoopPump2RPM, reactorInnerLoopPump2PositionInput.value, 0.01f);
+        else
+            reactorInnerLoopPump2RPM *= 0.99f;
 
         reactorCoreInnerDelta = reactorCoreTemperature - reactorInnerLoopTemp;
         reactorInnerOuterDelta = reactorInnerLoopTemp - reactorOuterLoopTemp;
@@ -148,7 +178,7 @@ public class ShipController : MonoBehaviourPun
 
         //power production drops quickly over time
         reactorPowerProduction *= 0.99f;
-        //figure out our turnbine speeds.
+        //figure out our turbine speeds.
         reactorPowerProduction += Mathf.Pow(reactorTurbine1RPM, 1.1f);
         reactorPowerProduction += Mathf.Pow(reactorTurbine2RPM, 1.1f);
         reactorPowerProduction += Mathf.Pow(reactorTurbine3RPM, 1.1f);
@@ -248,7 +278,7 @@ public class ShipController : MonoBehaviourPun
         reactorOuterLoopFlowLPS -= reactorOuterLoopFlowLPS * radiator1Extension * 0.01f;
         reactorOuterLoopFlowLPS -= reactorOuterLoopFlowLPS * radiator2Extension * 0.01f;
 
-        //radiators act as a large mass heat sink, so these units are different.
+        //radiators act as a large mass heat sink.
         radiator1Temperature += radiatorTempDelta1 * 0.001f;
         reactorOuterLoopTemp -= radiatorTempDelta1 * 0.001f;
 
@@ -263,7 +293,7 @@ public class ShipController : MonoBehaviourPun
             autoSCRAM = true;
         if (reactorInnerOuterDelta > 500)
             autoSCRAM = true;
-        if (reactorInnerLoopTemp > 1057)
+        if (reactorInnerLoopTemp > 1057)//boiling point of nak in k
             autoSCRAM = true;
         if (reactorOuterLoopTemp > 700)
             autoSCRAM = true;
@@ -273,9 +303,9 @@ public class ShipController : MonoBehaviourPun
             autoSCRAM = true;
 
         //damage stuff.
-        //turning off damage stuff for test
+        //turning off damage stuff for senior game presentation
         /*
-        if (reactorCoreTemperature>3422.0f)//tungsten
+        if (reactorCoreTemperature>3422.0f)//tungsten melts
         {
             reactorCoreHealth -= Mathf.Max(0, ((reactorCoreTemperature - 3422.0f) * 0.0001f));
             if (reactorCoreHealth < 0)
@@ -305,9 +335,11 @@ public class ShipController : MonoBehaviourPun
     {
         return Mathf.Pow(Mathf.Clamp(temp - 1057, 0, 100000.0f), 1.1f);
     }
+
+    //TODO need to add some sort of a lag to this for phase change heat losses.
     public float getH2OPressure(float temp)
     {
-        if (temp < 273.15f)
+        if (temp < 273.15f)//frozen
             return 0;
         float ftemp = ((temp-273.15f) * 9.0f) / 5.0f + 32.0f;//convert to f
 
@@ -315,6 +347,8 @@ public class ShipController : MonoBehaviourPun
         float psia = (7.0f * Mathf.Pow(10.0f,-10.0f)) * Mathf.Pow(ftemp, 4.4374f);
         return psia * 6.89476f;//in kpa
     }
+
+    //just tossed this together to debug a nan issue.
     public string ToString()
     {
         string s = "";
