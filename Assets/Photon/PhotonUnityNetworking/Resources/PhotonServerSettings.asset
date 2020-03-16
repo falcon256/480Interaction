@@ -36,5 +36,6 @@ MonoBehaviour:
   - RespawnSpaceship
   - handlePositionUpdate
   - transformPositionUpdate
+  - UpdateImportantStats
   DisableAutoOpenWizard: 1
   ShowSettings: 1

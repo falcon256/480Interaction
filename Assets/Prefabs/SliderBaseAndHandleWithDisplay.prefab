@@ -111,8 +111,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 100.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -479,6 +477,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentSlider: {fileID: 163004225737359324}
   ticksUntilUpdate: 100
+--- !u!114 &1577846484016803554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170363621818708064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1001 &5244924991233410475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,7 +578,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ObservedComponents.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1577846484016803554}
     - target: {fileID: 4155486623864092102, guid: 8fe264d1eb946ca488015321bc9969f7,
         type: 3}
       propertyPath: m_CollisionDetection

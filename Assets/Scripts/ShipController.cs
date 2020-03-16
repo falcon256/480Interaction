@@ -6,7 +6,7 @@ using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 [RequireComponent(typeof(PhotonView))]
-public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
+public class ShipController : MonoBehaviourPun
 {
 
     //inputs
@@ -92,7 +92,7 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
 
     public bool autoSCRAM = true;
 
-
+    float lastNetworkUpdate = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,7 +108,13 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
     void FixedUpdate()
     {
         doReactorUpdate();
-    
+
+        if(Time.realtimeSinceStartup > lastNetworkUpdate + 1)
+        {
+            lastNetworkUpdate = Time.realtimeSinceStartup;
+            if(PhotonNetwork.IsMasterClient)
+                updateDataOnPeers();
+        }
     }
     
     private void doReactorUpdate()
@@ -134,10 +140,10 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
         reactorCoreLoopFlowLPS *= 0.90f;//keep these highly limited or they go nuts.
         reactorInnerLoopFlowLPS *= 0.90f;
         reactorOuterLoopFlowLPS *= 0.90f;
-        reactorCoreTemperature -= (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * (reactorCoreLoopFlowLPS + reactorInnerLoopFlowLPS)) * reactorCoreInnerHeatExchangerHealth * 0.001f;
-        reactorInnerLoopTemp +=   (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * (reactorCoreLoopFlowLPS + reactorInnerLoopFlowLPS)) * reactorCoreInnerHeatExchangerHealth * 0.001f;
-        reactorInnerLoopTemp -= (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * (reactorInnerLoopFlowLPS + reactorOuterLoopFlowLPS)) * reactorInnerOuterHeatExchangerHealth * 0.001f;
-        reactorOuterLoopTemp += (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * (reactorInnerLoopFlowLPS + reactorOuterLoopFlowLPS)) * reactorInnerOuterHeatExchangerHealth * 0.001f;
+        reactorCoreTemperature -= (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * (reactorCoreLoopFlowLPS + reactorInnerLoopFlowLPS)) * reactorCoreInnerHeatExchangerHealth * 0.05f;
+        reactorInnerLoopTemp +=   (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * (reactorCoreLoopFlowLPS + reactorInnerLoopFlowLPS)) * reactorCoreInnerHeatExchangerHealth * 0.05f;
+        reactorInnerLoopTemp -= (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * (reactorInnerLoopFlowLPS + reactorOuterLoopFlowLPS)) * reactorInnerOuterHeatExchangerHealth * 0.05f;
+        reactorOuterLoopTemp += (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * (reactorInnerLoopFlowLPS + reactorOuterLoopFlowLPS)) * reactorInnerOuterHeatExchangerHealth * 0.05f;
 
 
         //power production drops quickly over time
@@ -158,27 +164,39 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
         //handle turbine power production.
         if (reactorTurbine1OnOff && reactorTurbine1OnOff.on)
         {
-            reactorTurbine1RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
-            reactorTurbine1RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
+            reactorTurbine1RPM = Mathf.Lerp(reactorTurbine1RPM, reactorOuterLoopPressure, 0.001f);
+            //reactorTurbine1RPM += reactorOuterLoopPressure * 0.0001f;
+            //reactorTurbine1RPM *= 0.90f;
+            reactorOuterLoopTemp *= 0.999f;
+            reactorOuterLoopPressure *= 0.999f;
+            //reactorOuterLoopTemp -= Mathf.Min(reactorOuterLoopTemp, reactorTurbine1RPM * 0.001f);
         }
         if (reactorTurbine2OnOff && reactorTurbine2OnOff.on)
         {
-            reactorTurbine2RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
-            reactorTurbine2RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
+            reactorTurbine2RPM = Mathf.Lerp(reactorTurbine2RPM, reactorOuterLoopPressure, 0.001f);
+            //reactorTurbine2RPM += reactorOuterLoopPressure * 0.0001f;
+            //reactorTurbine2RPM *= 0.90f;
+            reactorOuterLoopTemp *= 0.999f;
+            reactorOuterLoopPressure *= 0.999f;
+            //reactorOuterLoopTemp -= Mathf.Min(reactorOuterLoopTemp, reactorTurbine2RPM * 0.001f);
         }
         if (reactorTurbine3OnOff && reactorTurbine3OnOff.on)
         {
-            reactorTurbine3RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
-            reactorTurbine3RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
+            reactorTurbine3RPM = Mathf.Lerp(reactorTurbine3RPM, reactorOuterLoopPressure, 0.001f);
+            //reactorTurbine3RPM += reactorOuterLoopPressure * 0.0001f;
+            //reactorTurbine3RPM *= 0.90f;
+            reactorOuterLoopTemp *= 0.999f;
+            reactorOuterLoopPressure *= 0.999f;
+            //reactorOuterLoopTemp -= Mathf.Min(reactorOuterLoopTemp, reactorTurbine3RPM * 0.001f);
         }
         if (reactorTurbine4OnOff && reactorTurbine4OnOff.on)
         {
-            reactorTurbine4RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
-            reactorTurbine4RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
+            reactorTurbine4RPM = Mathf.Lerp(reactorTurbine4RPM, reactorOuterLoopPressure, 0.001f);
+            //reactorTurbine4RPM += reactorOuterLoopPressure * 0.0001f;
+            //reactorTurbine4RPM *= 0.90f;
+            reactorOuterLoopTemp *= 0.999f;
+            reactorOuterLoopPressure *= 0.999f;
+            //reactorOuterLoopTemp -= Mathf.Min(reactorOuterLoopTemp,reactorTurbine4RPM * 0.001f);
         }
 
         if (float.IsNaN(reactorInnerOuterDelta))
@@ -203,7 +221,7 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
         //reactorCorePressure = (reactorCorePressure * 0.99f) + (reactorCoreLoopPump1RPM * getNaKPressure(reactorCoreTemperature)) + (reactorCoreLoopPump2RPM * getNaKPressure(reactorCoreTemperature)) + reactorFlux + (reactorOuterLoopTemp + reactorInnerLoopTemp) * 0.001f;
         //reactorInnerLoopPressure = (reactorInnerLoopPressure * 0.99f) + (reactorInnerLoopPump1RPM * getNaKPressure(reactorInnerLoopTemp)) + (reactorInnerLoopPump2RPM * getNaKPressure(reactorInnerLoopTemp))+ (reactorCoreTemperature+reactorOuterLoopTemp)*0.001f;
         //reactorOuterLoopPressure = (reactorOuterLoopPressure * 0.9f) + ((getH2OPressure(reactorOuterLoopTemp)) * 0.01f) + (reactorCoreTemperature + reactorInnerLoopTemp) * 0.001f;//this throws nans. NANS BAD!
-        reactorCorePressure = Mathf.Lerp(reactorCorePressure, getNaKPressure(reactorCoreTemperature) + (reactorInnerLoopTemp + reactorOuterLoopTemp) * 0.001f, 0.01f);
+        reactorCorePressure = Mathf.Lerp(reactorCorePressure, getNaKPressure(reactorCoreTemperature) + (reactorInnerLoopTemp + reactorOuterLoopTemp) * 0.001f, 0.1f);
         reactorInnerLoopPressure = Mathf.Lerp(reactorInnerLoopPressure, getNaKPressure(reactorInnerLoopTemp) + (reactorCoreTemperature + reactorOuterLoopTemp) * 0.001f, 0.01f);
         reactorOuterLoopPressure = Mathf.Lerp(reactorOuterLoopPressure, getH2OPressure(reactorOuterLoopTemp) + (reactorCoreTemperature + reactorInnerLoopTemp) * 0.001f, 0.01f);
         
@@ -238,16 +256,50 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
         reactorOuterLoopTemp -= radiatorTempDelta2 * 0.001f;
 
 
+        //autoscram triggers
+        if (reactorCoreTemperature > 3300)
+            autoSCRAM = true;
+        if (reactorCoreInnerDelta > 2500)
+            autoSCRAM = true;
+        if (reactorInnerOuterDelta > 500)
+            autoSCRAM = true;
+        if (reactorInnerLoopTemp > 1057)
+            autoSCRAM = true;
+        if (reactorOuterLoopTemp > 700)
+            autoSCRAM = true;
+        if (reactorInnerLoopPressure > 1000)
+            autoSCRAM = true;
+        if (reactorOuterLoopPressure > 1000)
+            autoSCRAM = true;
 
         //damage stuff.
+        //turning off damage stuff for test
+        /*
         if (reactorCoreTemperature>3422.0f)//tungsten
         {
             reactorCoreHealth -= Mathf.Max(0, ((reactorCoreTemperature - 3422.0f) * 0.0001f));
             if (reactorCoreHealth < 0)
                 reactorCoreHealth = 0;
         }
+        */
     }
 
+
+    public void updateDataOnPeers()
+    {
+        PhotonView pv = this.photonView;
+        pv.RPC("UpdateImportantStats", RpcTarget.Others, reactorCoreTemperature, reactorInnerLoopTemp, reactorOuterLoopTemp, reactorFlux);
+
+    }
+
+    [PunRPC]
+    public void UpdateImportantStats(float a, float b, float c, float d)
+    {
+        reactorCoreTemperature = a;
+        reactorInnerLoopTemp = b;
+        reactorOuterLoopTemp = c;
+        reactorFlux = d;
+    }
 
     public float getNaKPressure(float temp)
     {
@@ -255,37 +307,14 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
     }
     public float getH2OPressure(float temp)
     {
-        float ftemp = (temp * 9.0f) / 5.0f + 32.0f;//convert to f
+        if (temp < 273.15f)
+            return 0;
+        float ftemp = ((temp-273.15f) * 9.0f) / 5.0f + 32.0f;//convert to f
+
         //steam pressure from F to PSIA
-        float psia = (7.0f * Mathf.Pow(10.0f,-10.0f)) * Mathf.Pow(temp, 4.4374f);
+        float psia = (7.0f * Mathf.Pow(10.0f,-10.0f)) * Mathf.Pow(ftemp, 4.4374f);
         return psia * 6.89476f;//in kpa
     }
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        Debug.Log("OnPhotonSerializeView");
-        if (stream.IsWriting)
-        {
-            stream.SendNext(reactorCoreTemperature);
-        }
-        else
-        {
-            reactorCoreTemperature = (float)stream.ReceiveNext();
-        }
-    }
-
-    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        Debug.Log("OnPhotonSerializeView");
-        if (stream.IsWriting)
-        {
-            stream.SendNext(reactorCoreTemperature);
-        }
-        else
-        {
-            reactorCoreTemperature = (float)stream.ReceiveNext();
-        }
-    }
-    
     public string ToString()
     {
         string s = "";
