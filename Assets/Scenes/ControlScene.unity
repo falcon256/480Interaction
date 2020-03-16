@@ -8342,8 +8342,8 @@ MonoBehaviour:
   reactorCorePressure: 1
   reactorInnerLoopPressure: 1
   reactorOuterLoopPressure: 1
-  reactorCoreInnerHeatExchangerEfficiency: 0.003
-  reactorInnerOuterHeatExchangerEfficiency: 0.002
+  reactorCoreInnerHeatExchangerEfficiency: 0.005
+  reactorInnerOuterHeatExchangerEfficiency: 0.005
   reactorCoreLoopPump1RPM: 1
   reactorCoreLoopPump2RPM: 1
   reactorInnerLoopPump1RPM: 1

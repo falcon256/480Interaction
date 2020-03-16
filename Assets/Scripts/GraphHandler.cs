@@ -11,7 +11,7 @@ public class GraphHandler : MonoBehaviour
     public float graphWidth = 64.0f;
     public float horizOffset = 5.0f;
     public int maxDataPoints = 256;
-    public UILine outputGraph = null; 
+    public UILine outputGraph = null; //this is the component that is used from the data render package, just the line.
     public TMP_Text textValue = null;
     public TMP_Text sideLabelText = null;
     public TMP_Text largeTextValue = null;
@@ -58,8 +58,6 @@ public class GraphHandler : MonoBehaviour
     }
     public Color getColorValue(float v)
     {
-        //Debug.Log(v);
-        //v = Mathf.Clamp(v, -0.5f, 0.5f);
         if (v > 0.5f)
             return Color.Lerp(Color.green, Color.red, v - 0.5f);
         return Color.Lerp(Color.green, Color.blue, 0.5f - v);

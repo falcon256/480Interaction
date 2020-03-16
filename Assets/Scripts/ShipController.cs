@@ -49,8 +49,8 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
     public float reactorInnerLoopPressure = 1.0f;
     public float reactorOuterLoopPressure = 1.0f;
 
-    public float reactorCoreInnerHeatExchangerEfficiency = 0.0003f;
-    public float reactorInnerOuterHeatExchangerEfficiency = 0.0002f;
+    public float reactorCoreInnerHeatExchangerEfficiency = 0.0005f;
+    public float reactorInnerOuterHeatExchangerEfficiency = 0.0005f;
 
     public float reactorCoreLoopPump1RPM = 1.0f;
     public float reactorCoreLoopPump2RPM = 1.0f;
@@ -121,58 +121,64 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
         reactorCoreTemperature *= 0.9999f;
         reactorCoreTemperature = Mathf.Clamp(reactorCoreTemperature, 0, 100000.0f);
 
-        reactorCoreLoopPump1RPM = Mathf.Lerp(reactorCoreLoopPump1RPM, reactorCoreLoopPump1PositionInput.value * 100.0f, 0.01f);
-        reactorCoreLoopPump2RPM = Mathf.Lerp(reactorCoreLoopPump2RPM, reactorCoreLoopPump2PositionInput.value * 100.0f, 0.01f);
-        reactorInnerLoopPump1RPM = Mathf.Lerp(reactorInnerLoopPump1RPM, reactorInnerLoopPump1PositionInput.value * 100.0f, 0.01f);
-        reactorInnerLoopPump2RPM = Mathf.Lerp(reactorInnerLoopPump2RPM, reactorInnerLoopPump2PositionInput.value * 100.0f, 0.01f);
+        reactorCoreLoopPump1RPM = Mathf.Lerp(reactorCoreLoopPump1RPM, reactorCoreLoopPump1PositionInput.value, 0.01f);
+        reactorCoreLoopPump2RPM = Mathf.Lerp(reactorCoreLoopPump2RPM, reactorCoreLoopPump2PositionInput.value, 0.01f);
+        reactorInnerLoopPump1RPM = Mathf.Lerp(reactorInnerLoopPump1RPM, reactorInnerLoopPump1PositionInput.value, 0.01f);
+        reactorInnerLoopPump2RPM = Mathf.Lerp(reactorInnerLoopPump2RPM, reactorInnerLoopPump2PositionInput.value, 0.01f);
 
         reactorCoreInnerDelta = reactorCoreTemperature - reactorInnerLoopTemp;
         reactorInnerOuterDelta = reactorInnerLoopTemp - reactorOuterLoopTemp;
         reactorCoreLoopFlowLPS += (((reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * 0.1f * reactorCoreLoopHealth));
         reactorInnerLoopFlowLPS += (((reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * 0.1f));
         reactorOuterLoopFlowLPS += (((reactorTurbine1RPM + reactorTurbine2RPM + reactorTurbine3RPM + reactorTurbine4RPM) * 0.01f));
-        reactorCoreLoopFlowLPS *= 0.99f;
-        reactorInnerLoopFlowLPS *= 0.99f;
-        reactorOuterLoopFlowLPS *= 0.999f;
-        reactorCoreTemperature -= (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * reactorCoreLoopFlowLPS) * reactorCoreInnerHeatExchangerHealth * 0.01f;
-        reactorInnerLoopTemp += (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * reactorCoreLoopFlowLPS * reactorInnerLoopFlowLPS) * reactorCoreInnerHeatExchangerHealth * 0.01f;
-        reactorInnerLoopTemp -= (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * reactorCoreLoopFlowLPS * reactorInnerLoopFlowLPS) * reactorInnerOuterHeatExchangerHealth * 0.01f;
-        reactorOuterLoopTemp += (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * reactorInnerLoopFlowLPS * reactorOuterLoopFlowLPS) * reactorInnerOuterHeatExchangerHealth * 0.01f;
+        reactorCoreLoopFlowLPS *= 0.90f;//keep these highly limited or they go nuts.
+        reactorInnerLoopFlowLPS *= 0.90f;
+        reactorOuterLoopFlowLPS *= 0.90f;
+        reactorCoreTemperature -= (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * (reactorCoreLoopFlowLPS + reactorInnerLoopFlowLPS)) * reactorCoreInnerHeatExchangerHealth * 0.001f;
+        reactorInnerLoopTemp +=   (reactorCoreInnerDelta * reactorCoreInnerHeatExchangerEfficiency * (reactorCoreLoopPump1RPM + reactorCoreLoopPump2RPM) * (reactorCoreLoopFlowLPS + reactorInnerLoopFlowLPS)) * reactorCoreInnerHeatExchangerHealth * 0.001f;
+        reactorInnerLoopTemp -= (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * (reactorInnerLoopFlowLPS + reactorOuterLoopFlowLPS)) * reactorInnerOuterHeatExchangerHealth * 0.001f;
+        reactorOuterLoopTemp += (reactorInnerOuterDelta * reactorInnerOuterHeatExchangerEfficiency * (reactorInnerLoopPump1RPM + reactorInnerLoopPump2RPM) * (reactorInnerLoopFlowLPS + reactorOuterLoopFlowLPS)) * reactorInnerOuterHeatExchangerHealth * 0.001f;
 
-        //figure out our turnbine speeds. A couple of temp values for what is left in the pipe after the turbine is needed.
 
-        reactorPowerProduction += reactorTurbine1RPM;
-        reactorPowerProduction += reactorTurbine2RPM;
-        reactorPowerProduction += reactorTurbine3RPM;
-        reactorPowerProduction += reactorTurbine4RPM;
+        //power production drops quickly over time
+        reactorPowerProduction *= 0.99f;
+        //figure out our turnbine speeds.
+        reactorPowerProduction += Mathf.Pow(reactorTurbine1RPM, 1.1f);
+        reactorPowerProduction += Mathf.Pow(reactorTurbine2RPM, 1.1f);
+        reactorPowerProduction += Mathf.Pow(reactorTurbine3RPM, 1.1f);
+        reactorPowerProduction += Mathf.Pow(reactorTurbine4RPM, 1.1f);
         reactorTurbine1RPM *= 0.99f;
         reactorTurbine2RPM *= 0.99f;
         reactorTurbine3RPM *= 0.99f;
         reactorTurbine4RPM *= 0.99f;
 
+        float radiatorTempDelta1 = reactorOuterLoopTemp - radiator1Temperature;
+        float radiatorTempDelta2 = reactorOuterLoopTemp - radiator2Temperature;
+
+        //handle turbine power production.
         if (reactorTurbine1OnOff && reactorTurbine1OnOff.on)
         {
-            reactorTurbine1RPM += reactorOuterLoopPressure * 0.001f;
+            reactorTurbine1RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
             reactorTurbine1RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.0001f;
+            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
         }
         if (reactorTurbine2OnOff && reactorTurbine2OnOff.on)
         {
-            reactorTurbine2RPM += reactorOuterLoopPressure * 0.001f;
+            reactorTurbine2RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
             reactorTurbine2RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.0001f;
+            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
         }
         if (reactorTurbine3OnOff && reactorTurbine3OnOff.on)
         {
-            reactorTurbine3RPM += reactorOuterLoopPressure * 0.001f;
+            reactorTurbine3RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
             reactorTurbine3RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.0001f;
+            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
         }
         if (reactorTurbine4OnOff && reactorTurbine4OnOff.on)
         {
-            reactorTurbine4RPM += reactorOuterLoopPressure * 0.001f;
+            reactorTurbine4RPM += reactorOuterLoopPressure * 0.001f * Mathf.Max(radiatorTempDelta1, 0) * Mathf.Max(radiatorTempDelta2, 0);
             reactorTurbine4RPM *= 0.98f;
-            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.0001f;
+            reactorOuterLoopTemp -= reactorOuterLoopPressure * 0.001f;
         }
 
         if (float.IsNaN(reactorInnerOuterDelta))
@@ -193,15 +199,24 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
         if (float.IsNaN(reactorOuterLoopTemp))
             Debug.LogError("reactorOuterLoopTemp nan");
 
-        reactorCorePressure = (reactorCorePressure * 0.99f) + (reactorCoreLoopPump1RPM * getNaKPressure(reactorCoreTemperature)) + (reactorCoreLoopPump2RPM * getNaKPressure(reactorCoreTemperature)) + reactorFlux + (reactorOuterLoopTemp + reactorInnerLoopTemp) * 0.001f;
-        reactorInnerLoopPressure = (reactorInnerLoopPressure * 0.99f) + (reactorInnerLoopPump1RPM * getNaKPressure(reactorInnerLoopTemp)) + (reactorInnerLoopPump2RPM * getNaKPressure(reactorInnerLoopTemp))+ (reactorCoreTemperature+reactorOuterLoopTemp)*0.001f;
-        reactorOuterLoopPressure = (reactorOuterLoopPressure * 0.9f) + ((getH2OPressure(reactorOuterLoopTemp) - reactorOuterLoopFlowLPS) * 0.01f) + (reactorCoreTemperature + reactorInnerLoopTemp) * 0.001f;
+        //calculate pressures by what is inside the loops
+        //reactorCorePressure = (reactorCorePressure * 0.99f) + (reactorCoreLoopPump1RPM * getNaKPressure(reactorCoreTemperature)) + (reactorCoreLoopPump2RPM * getNaKPressure(reactorCoreTemperature)) + reactorFlux + (reactorOuterLoopTemp + reactorInnerLoopTemp) * 0.001f;
+        //reactorInnerLoopPressure = (reactorInnerLoopPressure * 0.99f) + (reactorInnerLoopPump1RPM * getNaKPressure(reactorInnerLoopTemp)) + (reactorInnerLoopPump2RPM * getNaKPressure(reactorInnerLoopTemp))+ (reactorCoreTemperature+reactorOuterLoopTemp)*0.001f;
+        //reactorOuterLoopPressure = (reactorOuterLoopPressure * 0.9f) + ((getH2OPressure(reactorOuterLoopTemp)) * 0.01f) + (reactorCoreTemperature + reactorInnerLoopTemp) * 0.001f;//this throws nans. NANS BAD!
+        reactorCorePressure = Mathf.Lerp(reactorCorePressure, getNaKPressure(reactorCoreTemperature) + (reactorInnerLoopTemp + reactorOuterLoopTemp) * 0.001f, 0.01f);
+        reactorInnerLoopPressure = Mathf.Lerp(reactorInnerLoopPressure, getNaKPressure(reactorInnerLoopTemp) + (reactorCoreTemperature + reactorOuterLoopTemp) * 0.001f, 0.01f);
+        reactorOuterLoopPressure = Mathf.Lerp(reactorOuterLoopPressure, getH2OPressure(reactorOuterLoopTemp) + (reactorCoreTemperature + reactorInnerLoopTemp) * 0.001f, 0.01f);
+        
         if (float.IsNaN(reactorCorePressure))
             Debug.LogError("reactorCorePressure nan");
         if (float.IsNaN(reactorInnerLoopPressure))
             Debug.LogError("reactorInnerLoopPressure nan");
         if (float.IsNaN(reactorOuterLoopPressure))
+        {
             Debug.LogError("reactorOuterLoopPressure nan");
+            Debug.LogError(this.ToString());
+            reactorOuterLoopPressure = 0;
+        }
         if (reactorEmergencySCRAM.isOn||autoSCRAM)
         {
             reactorControlRodPositionInput.doReset = true;
@@ -211,13 +226,25 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
         }
 
 
+        //flow restriction from radiator extension
+        reactorOuterLoopFlowLPS -= reactorOuterLoopFlowLPS * radiator1Extension * 0.01f;
+        reactorOuterLoopFlowLPS -= reactorOuterLoopFlowLPS * radiator2Extension * 0.01f;
+
+        //radiators act as a large mass heat sink, so these units are different.
+        radiator1Temperature += radiatorTempDelta1 * 0.001f;
+        reactorOuterLoopTemp -= radiatorTempDelta1 * 0.001f;
+
+        radiator2Temperature += radiatorTempDelta2 * 0.001f;
+        reactorOuterLoopTemp -= radiatorTempDelta2 * 0.001f;
 
 
 
         //damage stuff.
-        if(reactorCoreTemperature>3422.0f)//tungsten
+        if (reactorCoreTemperature>3422.0f)//tungsten
         {
             reactorCoreHealth -= Mathf.Max(0, ((reactorCoreTemperature - 3422.0f) * 0.0001f));
+            if (reactorCoreHealth < 0)
+                reactorCoreHealth = 0;
         }
     }
 
@@ -258,6 +285,52 @@ public class ShipController : MonoBehaviourPunCallbacks, IPunObservable
             reactorCoreTemperature = (float)stream.ReceiveNext();
         }
     }
+    
+    public string ToString()
+    {
+        string s = "";
+        s += reactorCoreHealth + "\n";
+        s += reactorCoreLoopHealth + "\n";
+        s += reactorCoreInnerHeatExchangerHealth + "\n";
+        s += reactorInnerOuterHeatExchangerHealth + "\n";
+        s += reactorCorePressure + "\n";
+        s += reactorInnerLoopPressure + "\n";
+        s += reactorOuterLoopPressure + "\n";
+        s += reactorCoreInnerHeatExchangerEfficiency + "\n";
+        s += reactorInnerOuterHeatExchangerEfficiency + "\n";
+        s += reactorCoreLoopPump1RPM + "\n";
+        s += reactorCoreLoopPump2RPM + "\n";
+        s += reactorInnerLoopPump1RPM + "\n";
+        s += reactorInnerLoopPump2RPM + "\n";
+        s += reactorCoreLoopFlowLPS + "\n";
+        s += reactorInnerLoopFlowLPS + "\n";
+        s += reactorOuterLoopFlowLPS + "\n";
+        s += reactorTurbine1RPM + "\n";
+        s += reactorTurbine2RPM + "\n";
+        s += reactorTurbine3RPM + "\n";
+        s += reactorTurbine4RPM + "\n";
+        s += reactorTurbine1Output + "\n";
+        s += reactorTurbine2Output + "\n";
+        s += reactorTurbine3Output + "\n";
+        s += reactorTurbine4Output + "\n";
+        s += reactorPowerDrawKW + "\n";
+        s += reactorPowerProduction + "\n";
+        s += reactorFlux + "\n";
+        s += reactorModeratorPosition + "\n";
+        s += reactorControlRodPosition + "\n";
+        s += reactorFuelLevel + "\n";
+        s += reactorDecayProducts + "\n";
+        s += reactorXenonBuildup + "\n";
+        s += reactorCapacitorVoltage + "reactorCapacitorVoltage\n";
+        s += radiator1Extension + "radiator1Extension\n";
+        s += radiator2Extension + "radiator2Extension\n";
+        s += radiator1Temperature + "radiator1Temperature\n";
+        s += radiator2Temperature + "radiator2Temperature\n";
+
+        return s;
+    }
+
+
 }
 
 
